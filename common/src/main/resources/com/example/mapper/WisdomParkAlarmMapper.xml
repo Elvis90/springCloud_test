@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mapper.WisdomParkAlarmMapper" >
+  <resultMap id="BaseResultMap" type="com.example.entity.WisdomParkAlarm" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="alarm_obj" property="alarmObj" jdbcType="VARCHAR" />
+    <result column="alarm_id" property="alarmId" jdbcType="VARCHAR" />
+    <result column="alarm_time" property="alarmTime" jdbcType="TIMESTAMP" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="alarm_rule_id" property="alarmRuleId" jdbcType="BIGINT" />
+    <result column="alarm_rule" property="alarmRule" jdbcType="VARCHAR" />
+    <result column="location_id" property="locationId" jdbcType="VARCHAR" />
+    <result column="push_obj" property="pushObj" jdbcType="VARCHAR" />
+    <result column="company_id" property="companyId" jdbcType="INTEGER" />
+    <result column="yard_id" property="yardId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, alarm_obj, alarm_id, alarm_time, type, user_id, alarm_rule_id, alarm_rule, location_id, 
+    push_obj, company_id, yard_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from wisdom_park_alarm
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from wisdom_park_alarm
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.example.entity.WisdomParkAlarm" >
+    insert into wisdom_park_alarm (id, alarm_obj, alarm_id, 
+      alarm_time, type, user_id, 
+      alarm_rule_id, alarm_rule, location_id, 
+      push_obj, company_id, yard_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{alarmObj,jdbcType=VARCHAR}, #{alarmId,jdbcType=VARCHAR}, 
+      #{alarmTime,jdbcType=TIMESTAMP}, #{type,jdbcType=INTEGER}, #{userId,jdbcType=BIGINT}, 
+      #{alarmRuleId,jdbcType=BIGINT}, #{alarmRule,jdbcType=VARCHAR}, #{locationId,jdbcType=VARCHAR}, 
+      #{pushObj,jdbcType=VARCHAR}, #{companyId,jdbcType=INTEGER}, #{yardId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.WisdomParkAlarm" >
+    insert into wisdom_park_alarm
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="alarmObj != null" >
+        alarm_obj,
+      </if>
+      <if test="alarmId != null" >
+        alarm_id,
+      </if>
+      <if test="alarmTime != null" >
+        alarm_time,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="alarmRuleId != null" >
+        alarm_rule_id,
+      </if>
+      <if test="alarmRule != null" >
+        alarm_rule,
+      </if>
+      <if test="locationId != null" >
+        location_id,
+      </if>
+      <if test="pushObj != null" >
+        push_obj,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="yardId != null" >
+        yard_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="alarmObj != null" >
+        #{alarmObj,jdbcType=VARCHAR},
+      </if>
+      <if test="alarmId != null" >
+        #{alarmId,jdbcType=VARCHAR},
+      </if>
+      <if test="alarmTime != null" >
+        #{alarmTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="alarmRuleId != null" >
+        #{alarmRuleId,jdbcType=BIGINT},
+      </if>
+      <if test="alarmRule != null" >
+        #{alarmRule,jdbcType=VARCHAR},
+      </if>
+      <if test="locationId != null" >
+        #{locationId,jdbcType=VARCHAR},
+      </if>
+      <if test="pushObj != null" >
+        #{pushObj,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="yardId != null" >
+        #{yardId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.entity.WisdomParkAlarm" >
+    update wisdom_park_alarm
+    <set >
+      <if test="alarmObj != null" >
+        alarm_obj = #{alarmObj,jdbcType=VARCHAR},
+      </if>
+      <if test="alarmId != null" >
+        alarm_id = #{alarmId,jdbcType=VARCHAR},
+      </if>
+      <if test="alarmTime != null" >
+        alarm_time = #{alarmTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="alarmRuleId != null" >
+        alarm_rule_id = #{alarmRuleId,jdbcType=BIGINT},
+      </if>
+      <if test="alarmRule != null" >
+        alarm_rule = #{alarmRule,jdbcType=VARCHAR},
+      </if>
+      <if test="locationId != null" >
+        location_id = #{locationId,jdbcType=VARCHAR},
+      </if>
+      <if test="pushObj != null" >
+        push_obj = #{pushObj,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="yardId != null" >
+        yard_id = #{yardId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.entity.WisdomParkAlarm" >
+    update wisdom_park_alarm
+    set alarm_obj = #{alarmObj,jdbcType=VARCHAR},
+      alarm_id = #{alarmId,jdbcType=VARCHAR},
+      alarm_time = #{alarmTime,jdbcType=TIMESTAMP},
+      type = #{type,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=BIGINT},
+      alarm_rule_id = #{alarmRuleId,jdbcType=BIGINT},
+      alarm_rule = #{alarmRule,jdbcType=VARCHAR},
+      location_id = #{locationId,jdbcType=VARCHAR},
+      push_obj = #{pushObj,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=INTEGER},
+      yard_id = #{yardId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

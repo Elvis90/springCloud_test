@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE generatorConfiguration  
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"  
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">  
+<generatorConfiguration>  
+        <classPathEntry location="D:\Repositories\Maven\mysql\mysql-connector-java\5.1.42\mysql-connector-java-5.1.42.jar" />  
+        <context id="context1" targetRuntime="MyBatis3">  
+        <commentGenerator>   
+	        <!-- 是否去除自动生成的注释 true：是 ： false:否 -->   
+	        <property name="suppressAllComments" value="true" />   
+	        <property name="suppressDate" value="true"/>  
+        </commentGenerator>   
+        <!--数据库链接地址账号密码-->  
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" 
+        				connectionURL="jdbc:mysql://172.19.2.115:3306/wispark" 
+        				userId="root" 
+        				password="mzyMZY123">
+        </jdbcConnection>  
+        <javaTypeResolver>  
+            <property name="forceBigDecimals" value="false"/>  
+        </javaTypeResolver>  
+        <!--生成Model类存放位置-->  
+        <javaModelGenerator targetPackage="com.example.entity" targetProject="src/main/java">  
+            <property name="enableSubPackages" value="true"/>  
+            <property name="trimStrings" value="true"/>  
+        </javaModelGenerator>  
+        <!--生成映射文件存放位置--> 
+        <sqlMapGenerator targetPackage="com.example.mapper" targetProject="src/main/resources">  
+            <property name="enableSubPackages" value="true"/>  
+        </sqlMapGenerator>  
+        <!--生成Dao类存放位置-->  
+        <!-- 客户端代码，生成易于使用的针对Model对象和XML配置文件 的代码  
+                type="ANNOTATEDMAPPER",生成Java Model 和基于注解的Mapper对象  
+                type="MIXEDMAPPER",生成基于注解的Java Model 和相应的Mapper对象  
+                type="XMLMAPPER",生成SQLMap XML文件和独立的Mapper接口  
+         -->  
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.example.mapper" targetProject="src/main/java">  
+            <property name="enableSubPackages" value="true"/>  
+        </javaClientGenerator>  
+       
+        <!--生成对应表及类名-->  
+        <table tableName="wisdom_park_user" domainObjectName="WisdomParkUser" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>  
+   		<table tableName="wisdom_park_role" domainObjectName="WisdomParkRole" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+ 		<table tableName="wisdom_park_user_role" domainObjectName="WisdomParkUserRole" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+ 		<table tableName="wisdom_park_resource" domainObjectName="WisdomParkResource" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+ 		<table tableName="wisdom_park_role_resource" domainObjectName="WisdomParkRoleResource" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+ 		<table tableName="wisdom_park_device" domainObjectName="WisdomParkDevice" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+ 		<table tableName="wisdom_park_location" domainObjectName="WisdomParkLocation" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+ 		<table tableName="wisdom_park_company" domainObjectName="WisdomParkCompany" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+ 		<table tableName="wisdom_park_car" domainObjectName="WisdomParkCar" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+ 		<table tableName="wisdom_park_order" domainObjectName="WisdomParkOrder" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+ 		<table tableName="wisdom_park_alarm" domainObjectName="WisdomParkAlarm" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+ 		<table tableName="wisdom_park_alarm_rule" domainObjectName="WisdomParkAlarmRule" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+ 		<table tableName="wisdom_park_msg" domainObjectName="WisdomParkMsg" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+ 		<table tableName="wisdom_park_log" domainObjectName="WisdomParkLog" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+    </context>  
+</generatorConfiguration>  

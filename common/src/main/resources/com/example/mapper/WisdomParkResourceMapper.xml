@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mapper.WisdomParkResourceMapper" >
+  <resultMap id="BaseResultMap" type="com.example.entity.WisdomParkResource" >
+    <id column="resource_id" property="resourceId" jdbcType="BIGINT" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="parent_id" property="parentId" jdbcType="BIGINT" />
+    <result column="cname" property="cname" jdbcType="VARCHAR" />
+    <result column="icon" property="icon" jdbcType="VARCHAR" />
+    <result column="is_leaf" property="isLeaf" jdbcType="INTEGER" />
+    <result column="link" property="link" jdbcType="VARCHAR" />
+    <result column="comments" property="comments" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="urls" property="urls" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    resource_id, status, parent_id, cname, icon, is_leaf, link, comments, sort, urls
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from wisdom_park_resource
+    where resource_id = #{resourceId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from wisdom_park_resource
+    where resource_id = #{resourceId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.example.entity.WisdomParkResource" >
+    insert into wisdom_park_resource (resource_id, status, parent_id, 
+      cname, icon, is_leaf, 
+      link, comments, sort, 
+      urls)
+    values (#{resourceId,jdbcType=BIGINT}, #{status,jdbcType=INTEGER}, #{parentId,jdbcType=BIGINT}, 
+      #{cname,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, #{isLeaf,jdbcType=INTEGER}, 
+      #{link,jdbcType=VARCHAR}, #{comments,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, 
+      #{urls,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.WisdomParkResource" >
+    insert into wisdom_park_resource
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="resourceId != null" >
+        resource_id,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="cname != null" >
+        cname,
+      </if>
+      <if test="icon != null" >
+        icon,
+      </if>
+      <if test="isLeaf != null" >
+        is_leaf,
+      </if>
+      <if test="link != null" >
+        link,
+      </if>
+      <if test="comments != null" >
+        comments,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="urls != null" >
+        urls,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="resourceId != null" >
+        #{resourceId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="cname != null" >
+        #{cname,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="isLeaf != null" >
+        #{isLeaf,jdbcType=INTEGER},
+      </if>
+      <if test="link != null" >
+        #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null" >
+        #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="urls != null" >
+        #{urls,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.entity.WisdomParkResource" >
+    update wisdom_park_resource
+    <set >
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="cname != null" >
+        cname = #{cname,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="isLeaf != null" >
+        is_leaf = #{isLeaf,jdbcType=INTEGER},
+      </if>
+      <if test="link != null" >
+        link = #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null" >
+        comments = #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="urls != null" >
+        urls = #{urls,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where resource_id = #{resourceId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.entity.WisdomParkResource" >
+    update wisdom_park_resource
+    set status = #{status,jdbcType=INTEGER},
+      parent_id = #{parentId,jdbcType=BIGINT},
+      cname = #{cname,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR},
+      is_leaf = #{isLeaf,jdbcType=INTEGER},
+      link = #{link,jdbcType=VARCHAR},
+      comments = #{comments,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      urls = #{urls,jdbcType=VARCHAR}
+    where resource_id = #{resourceId,jdbcType=BIGINT}
+  </update>
+</mapper>

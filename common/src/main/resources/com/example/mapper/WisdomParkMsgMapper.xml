@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mapper.WisdomParkMsgMapper" >
+  <resultMap id="BaseResultMap" type="com.example.entity.WisdomParkMsg" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="msg" property="msg" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="INTEGER" />
+    <result column="msg_object" property="msgObject" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, msg, STATUS, msg_object
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from wisdom_park_msg
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from wisdom_park_msg
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.example.entity.WisdomParkMsg" >
+    insert into wisdom_park_msg (id, msg, STATUS, 
+      msg_object)
+    values (#{id,jdbcType=BIGINT}, #{msg,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{msgObject,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.WisdomParkMsg" >
+    insert into wisdom_park_msg
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="msg != null" >
+        msg,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="msgObject != null" >
+        msg_object,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="msg != null" >
+        #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="msgObject != null" >
+        #{msgObject,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.entity.WisdomParkMsg" >
+    update wisdom_park_msg
+    <set >
+      <if test="msg != null" >
+        msg = #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="msgObject != null" >
+        msg_object = #{msgObject,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.entity.WisdomParkMsg" >
+    update wisdom_park_msg
+    set msg = #{msg,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=INTEGER},
+      msg_object = #{msgObject,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

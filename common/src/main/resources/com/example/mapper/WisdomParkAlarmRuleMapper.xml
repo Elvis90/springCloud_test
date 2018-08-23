@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mapper.WisdomParkAlarmRuleMapper" >
+  <resultMap id="BaseResultMap" type="com.example.entity.WisdomParkAlarmRule" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="rule_id" property="ruleId" jdbcType="VARCHAR" />
+    <result column="rule_name" property="ruleName" jdbcType="VARCHAR" />
+    <result column="rule_type" property="ruleType" jdbcType="INTEGER" />
+    <result column="rule_action_id" property="ruleActionId" jdbcType="BIGINT" />
+    <result column="rule_action" property="ruleAction" jdbcType="VARCHAR" />
+    <result column="is_push" property="isPush" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, rule_id, rule_name, rule_type, rule_action_id, rule_action, is_push, status, 
+    is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from wisdom_park_alarm_rule
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from wisdom_park_alarm_rule
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.example.entity.WisdomParkAlarmRule" >
+    insert into wisdom_park_alarm_rule (id, rule_id, rule_name, 
+      rule_type, rule_action_id, rule_action, 
+      is_push, status, is_delete
+      )
+    values (#{id,jdbcType=BIGINT}, #{ruleId,jdbcType=VARCHAR}, #{ruleName,jdbcType=VARCHAR}, 
+      #{ruleType,jdbcType=INTEGER}, #{ruleActionId,jdbcType=BIGINT}, #{ruleAction,jdbcType=VARCHAR}, 
+      #{isPush,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{isDelete,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.WisdomParkAlarmRule" >
+    insert into wisdom_park_alarm_rule
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="ruleId != null" >
+        rule_id,
+      </if>
+      <if test="ruleName != null" >
+        rule_name,
+      </if>
+      <if test="ruleType != null" >
+        rule_type,
+      </if>
+      <if test="ruleActionId != null" >
+        rule_action_id,
+      </if>
+      <if test="ruleAction != null" >
+        rule_action,
+      </if>
+      <if test="isPush != null" >
+        is_push,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="ruleId != null" >
+        #{ruleId,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleName != null" >
+        #{ruleName,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleType != null" >
+        #{ruleType,jdbcType=INTEGER},
+      </if>
+      <if test="ruleActionId != null" >
+        #{ruleActionId,jdbcType=BIGINT},
+      </if>
+      <if test="ruleAction != null" >
+        #{ruleAction,jdbcType=VARCHAR},
+      </if>
+      <if test="isPush != null" >
+        #{isPush,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.entity.WisdomParkAlarmRule" >
+    update wisdom_park_alarm_rule
+    <set >
+      <if test="ruleId != null" >
+        rule_id = #{ruleId,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleName != null" >
+        rule_name = #{ruleName,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleType != null" >
+        rule_type = #{ruleType,jdbcType=INTEGER},
+      </if>
+      <if test="ruleActionId != null" >
+        rule_action_id = #{ruleActionId,jdbcType=BIGINT},
+      </if>
+      <if test="ruleAction != null" >
+        rule_action = #{ruleAction,jdbcType=VARCHAR},
+      </if>
+      <if test="isPush != null" >
+        is_push = #{isPush,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.entity.WisdomParkAlarmRule" >
+    update wisdom_park_alarm_rule
+    set rule_id = #{ruleId,jdbcType=VARCHAR},
+      rule_name = #{ruleName,jdbcType=VARCHAR},
+      rule_type = #{ruleType,jdbcType=INTEGER},
+      rule_action_id = #{ruleActionId,jdbcType=BIGINT},
+      rule_action = #{ruleAction,jdbcType=VARCHAR},
+      is_push = #{isPush,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

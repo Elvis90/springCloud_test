@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mapper.WisdomParkOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.example.entity.WisdomParkOrder" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="order_num" property="orderNum" jdbcType="VARCHAR" />
+    <result column="car_number" property="carNumber" jdbcType="VARCHAR" />
+    <result column="location_id" property="locationId" jdbcType="VARCHAR" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="creater" property="creater" jdbcType="BIGINT" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="payment" property="payment" jdbcType="INTEGER" />
+    <result column="pay_price" property="payPrice" jdbcType="DOUBLE" />
+    <result column="creater_name" property="createrName" jdbcType="VARCHAR" />
+    <result column="yard_id" property="yardId" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="pay_time" property="payTime" jdbcType="TIMESTAMP" />
+    <result column="state_of_charge" property="stateOfCharge" jdbcType="INTEGER" />
+    <result column="charge_price" property="chargePrice" jdbcType="DOUBLE" />
+    <result column="total_price" property="totalPrice" jdbcType="DOUBLE" />
+    <result column="company_id" property="companyId" jdbcType="INTEGER" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="deleted" property="deleted" jdbcType="INTEGER" />
+    <result column="pic_path" property="picPath" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.example.entity.WisdomParkOrder" extends="BaseResultMap" >
+    <result column="location" property="location" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, order_num, car_number, location_id, start_time, end_time, status, creater, price, 
+    payment, pay_price, creater_name, yard_id, create_time, pay_time, state_of_charge, 
+    charge_price, total_price, company_id, company_name, deleted, pic_path
+  </sql>
+  <sql id="Blob_Column_List" >
+    location
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from wisdom_park_order
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from wisdom_park_order
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.example.entity.WisdomParkOrder" >
+    insert into wisdom_park_order (id, order_num, car_number, 
+      location_id, start_time, end_time, 
+      status, creater, price, 
+      payment, pay_price, creater_name, 
+      yard_id, create_time, pay_time, 
+      state_of_charge, charge_price, total_price, 
+      company_id, company_name, deleted, 
+      pic_path, location)
+    values (#{id,jdbcType=BIGINT}, #{orderNum,jdbcType=VARCHAR}, #{carNumber,jdbcType=VARCHAR}, 
+      #{locationId,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER}, #{creater,jdbcType=BIGINT}, #{price,jdbcType=DOUBLE}, 
+      #{payment,jdbcType=INTEGER}, #{payPrice,jdbcType=DOUBLE}, #{createrName,jdbcType=VARCHAR}, 
+      #{yardId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{payTime,jdbcType=TIMESTAMP}, 
+      #{stateOfCharge,jdbcType=INTEGER}, #{chargePrice,jdbcType=DOUBLE}, #{totalPrice,jdbcType=DOUBLE}, 
+      #{companyId,jdbcType=INTEGER}, #{companyName,jdbcType=VARCHAR}, #{deleted,jdbcType=INTEGER}, 
+      #{picPath,jdbcType=VARCHAR}, #{location,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.WisdomParkOrder" >
+    insert into wisdom_park_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderNum != null" >
+        order_num,
+      </if>
+      <if test="carNumber != null" >
+        car_number,
+      </if>
+      <if test="locationId != null" >
+        location_id,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="creater != null" >
+        creater,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="payment != null" >
+        payment,
+      </if>
+      <if test="payPrice != null" >
+        pay_price,
+      </if>
+      <if test="createrName != null" >
+        creater_name,
+      </if>
+      <if test="yardId != null" >
+        yard_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="payTime != null" >
+        pay_time,
+      </if>
+      <if test="stateOfCharge != null" >
+        state_of_charge,
+      </if>
+      <if test="chargePrice != null" >
+        charge_price,
+      </if>
+      <if test="totalPrice != null" >
+        total_price,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="companyName != null" >
+        company_name,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+      <if test="picPath != null" >
+        pic_path,
+      </if>
+      <if test="location != null" >
+        location,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderNum != null" >
+        #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="carNumber != null" >
+        #{carNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="locationId != null" >
+        #{locationId,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="creater != null" >
+        #{creater,jdbcType=BIGINT},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="payment != null" >
+        #{payment,jdbcType=INTEGER},
+      </if>
+      <if test="payPrice != null" >
+        #{payPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="createrName != null" >
+        #{createrName,jdbcType=VARCHAR},
+      </if>
+      <if test="yardId != null" >
+        #{yardId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payTime != null" >
+        #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stateOfCharge != null" >
+        #{stateOfCharge,jdbcType=INTEGER},
+      </if>
+      <if test="chargePrice != null" >
+        #{chargePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="totalPrice != null" >
+        #{totalPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="picPath != null" >
+        #{picPath,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null" >
+        #{location,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.entity.WisdomParkOrder" >
+    update wisdom_park_order
+    <set >
+      <if test="orderNum != null" >
+        order_num = #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="carNumber != null" >
+        car_number = #{carNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="locationId != null" >
+        location_id = #{locationId,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="creater != null" >
+        creater = #{creater,jdbcType=BIGINT},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="payment != null" >
+        payment = #{payment,jdbcType=INTEGER},
+      </if>
+      <if test="payPrice != null" >
+        pay_price = #{payPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="createrName != null" >
+        creater_name = #{createrName,jdbcType=VARCHAR},
+      </if>
+      <if test="yardId != null" >
+        yard_id = #{yardId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payTime != null" >
+        pay_time = #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stateOfCharge != null" >
+        state_of_charge = #{stateOfCharge,jdbcType=INTEGER},
+      </if>
+      <if test="chargePrice != null" >
+        charge_price = #{chargePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="totalPrice != null" >
+        total_price = #{totalPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="companyName != null" >
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="picPath != null" >
+        pic_path = #{picPath,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null" >
+        location = #{location,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.entity.WisdomParkOrder" >
+    update wisdom_park_order
+    set order_num = #{orderNum,jdbcType=VARCHAR},
+      car_number = #{carNumber,jdbcType=VARCHAR},
+      location_id = #{locationId,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      creater = #{creater,jdbcType=BIGINT},
+      price = #{price,jdbcType=DOUBLE},
+      payment = #{payment,jdbcType=INTEGER},
+      pay_price = #{payPrice,jdbcType=DOUBLE},
+      creater_name = #{createrName,jdbcType=VARCHAR},
+      yard_id = #{yardId,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      pay_time = #{payTime,jdbcType=TIMESTAMP},
+      state_of_charge = #{stateOfCharge,jdbcType=INTEGER},
+      charge_price = #{chargePrice,jdbcType=DOUBLE},
+      total_price = #{totalPrice,jdbcType=DOUBLE},
+      company_id = #{companyId,jdbcType=INTEGER},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      deleted = #{deleted,jdbcType=INTEGER},
+      pic_path = #{picPath,jdbcType=VARCHAR},
+      location = #{location,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.entity.WisdomParkOrder" >
+    update wisdom_park_order
+    set order_num = #{orderNum,jdbcType=VARCHAR},
+      car_number = #{carNumber,jdbcType=VARCHAR},
+      location_id = #{locationId,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      creater = #{creater,jdbcType=BIGINT},
+      price = #{price,jdbcType=DOUBLE},
+      payment = #{payment,jdbcType=INTEGER},
+      pay_price = #{payPrice,jdbcType=DOUBLE},
+      creater_name = #{createrName,jdbcType=VARCHAR},
+      yard_id = #{yardId,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      pay_time = #{payTime,jdbcType=TIMESTAMP},
+      state_of_charge = #{stateOfCharge,jdbcType=INTEGER},
+      charge_price = #{chargePrice,jdbcType=DOUBLE},
+      total_price = #{totalPrice,jdbcType=DOUBLE},
+      company_id = #{companyId,jdbcType=INTEGER},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      deleted = #{deleted,jdbcType=INTEGER},
+      pic_path = #{picPath,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
